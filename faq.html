@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eclair FAQ — common questions about the Scala Lightning node</title>
+<meta name="description" content="Frequently asked questions about Eclair: what it is, who makes it, its language and license, how it compares to LND and Core Lightning, requirements, and whether it is a wallet.">
+<link rel="canonical" href="https://USERNAME.github.io/eclair/faq.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Eclair FAQ — common questions about the Scala Lightning node">
+<meta property="og:description" content="Answers to the most common questions about Eclair, ACINQ's Scala Lightning Network implementation.">
+<meta property="og:url" content="https://USERNAME.github.io/eclair/faq.html">
+<meta property="og:image" content="https://USERNAME.github.io/eclair/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/style.css">
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"What is Eclair?","acceptedAnswer":{"@type":"Answer","text":"Eclair is an open-source implementation of the Bitcoin Lightning Network, written in Scala and maintained by ACINQ. It runs a full Lightning node that opens payment channels and routes payments, following the BOLT specifications."}},
+    {"@type":"Question","name":"Who develops Eclair?","acceptedAnswer":{"@type":"Answer","text":"Eclair is developed and maintained by ACINQ, a long-standing contributor to the Lightning Network and the BOLT specifications. The source code is public on GitHub under the Apache 2.0 license."}},
+    {"@type":"Question","name":"What programming language is Eclair written in?","acceptedAnswer":{"@type":"Answer","text":"Eclair is written in Scala and runs on the Java Virtual Machine (JVM), so it can run on Linux, macOS, and Windows where a suitable JDK is available."}},
+    {"@type":"Question","name":"Is Eclair a wallet?","acceptedAnswer":{"@type":"Answer","text":"No. Eclair is a headless Lightning node daemon controlled through an API and the eclair-cli tool, aimed at server-side and routing use. It is not a consumer wallet with a graphical interface."}},
+    {"@type":"Question","name":"Does Eclair need Bitcoin Core?","acceptedAnswer":{"@type":"Answer","text":"Yes. Eclair uses a Bitcoin Core full node as its backend for its view of the blockchain and wallet operations, so you need a synced Bitcoin Core instance."}},
+    {"@type":"Question","name":"How does Eclair compare to LND and Core Lightning?","acceptedAnswer":{"@type":"Answer","text":"All three are BOLT-compliant Lightning implementations that interoperate. Eclair is written in Scala by ACINQ, LND is written in Go by Lightning Labs, and Core Lightning is written in C by Blockstream. Eclair is often chosen for large, server-side routing nodes."}},
+    {"@type":"Question","name":"What license is Eclair released under?","acceptedAnswer":{"@type":"Answer","text":"Eclair is released under the Apache License 2.0, a permissive open-source license."}},
+    {"@type":"Question","name":"Where can I download Eclair?","acceptedAnswer":{"@type":"Answer","text":"Download Eclair only from ACINQ's official GitHub releases page at github.com/ACINQ/eclair/releases, and verify the download against the published checksums or signatures."}},
+    {"@type":"Question","name":"Is Eclair free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes. Eclair is free and open-source software. You can run, inspect, and modify it under the terms of the Apache 2.0 license."}}
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="./index.html" aria-label="Eclair home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="#f7a916" stroke="#0e1b2a" stroke-width="1" stroke-linejoin="round"/></svg>Éclair <span class="fr">FR · flash of lightning</span></a>
+    <button class="navtoggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="./what-is-eclair.html">What is Eclair</a>
+      <a href="./features.html">Features</a>
+      <a href="./install.html">Install</a>
+      <a href="./documentation.html">Docs</a>
+      <a href="./comparison.html">Comparison</a>
+      <a href="./faq.html" aria-current="page">FAQ</a>
+      <a href="./resources.html">Resources</a>
+      <a class="ghdl" href="https://github.com/ACINQ/eclair/releases" target="_blank" rel="noopener">Download ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="./index.html">Home</a> / FAQ</p>
+      <h1>Frequently asked questions</h1>
+      <p class="lead">Short, direct answers to the questions people ask most about Eclair.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <details class="faq-item" open><summary>What is Eclair?</summary><div class="faq-a"><p>Eclair is an open-source implementation of the Bitcoin Lightning Network, written in Scala and maintained by ACINQ. It runs a full Lightning node that opens payment channels and routes payments, following the BOLT specifications.</p></div></details>
+      <details class="faq-item"><summary>Who develops Eclair?</summary><div class="faq-a"><p>Eclair is developed and maintained by <a href="https://acinq.co" target="_blank" rel="noopener">ACINQ</a>, a long-standing contributor to the Lightning Network and the BOLT specifications. The source is public on <a href="https://github.com/ACINQ/eclair" target="_blank" rel="noopener">GitHub</a> under the Apache 2.0 license.</p></div></details>
+      <details class="faq-item"><summary>What programming language is Eclair written in?</summary><div class="faq-a"><p>Eclair is written in Scala and runs on the Java Virtual Machine (JVM), so it works on Linux, macOS and Windows where a suitable JDK is available.</p></div></details>
+      <details class="faq-item"><summary>Is Eclair a wallet?</summary><div class="faq-a"><p>No. Eclair is a headless Lightning node daemon controlled through an API and the <code>eclair-cli</code> tool, aimed at server-side and routing use. It is not a consumer wallet with a graphical interface.</p></div></details>
+      <details class="faq-item"><summary>Does Eclair need Bitcoin Core?</summary><div class="faq-a"><p>Yes. Eclair uses a Bitcoin Core full node as its backend for its view of the blockchain and wallet operations, so you need a synced Bitcoin Core instance.</p></div></details>
+      <details class="faq-item"><summary>How does Eclair compare to LND and Core Lightning?</summary><div class="faq-a"><p>All three are BOLT-compliant and interoperate. Eclair is written in Scala by ACINQ, LND in Go by Lightning Labs, and Core Lightning in C by Blockstream. Eclair is often chosen for large, server-side routing nodes. See the <a href="./comparison.html">comparison page</a>.</p></div></details>
+      <details class="faq-item"><summary>What license is Eclair released under?</summary><div class="faq-a"><p>Eclair is released under the Apache License 2.0, a permissive open-source license.</p></div></details>
+      <details class="faq-item"><summary>Where can I download Eclair?</summary><div class="faq-a"><p>Download Eclair only from ACINQ’s official <a href="https://github.com/ACINQ/eclair/releases" target="_blank" rel="noopener">GitHub releases</a>, and verify the download against the published checksums or signatures.</p></div></details>
+      <details class="faq-item"><summary>Is Eclair free to use?</summary><div class="faq-a"><p>Yes. Eclair is free and open-source software. You can run, inspect and modify it under the terms of the Apache 2.0 license.</p></div></details>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="fgrid">
+      <div><p class="brand-f">Éclair</p><p>An independent community guide to Eclair, the Scala Lightning Network node by ACINQ.</p></div>
+      <div><h4>Learn</h4><ul><li><a href="./what-is-eclair.html">What is Eclair</a></li><li><a href="./features.html">Features</a></li><li><a href="./comparison.html">Comparison</a></li><li><a href="./faq.html">FAQ</a></li></ul></div>
+      <div><h4>Use</h4><ul><li><a href="./install.html">Install</a></li><li><a href="./documentation.html">Documentation</a></li><li><a href="./resources.html">Resources</a></li></ul></div>
+      <div><h4>Official</h4><ul><li><a href="https://github.com/ACINQ/eclair" target="_blank" rel="noopener">Source (GitHub)</a></li><li><a href="https://github.com/ACINQ/eclair/releases" target="_blank" rel="noopener">Releases</a></li><li><a href="https://acinq.co" target="_blank" rel="noopener">ACINQ</a></li></ul></div>
+    </div>
+    <p class="disc">Eclair and the ACINQ name are the property of ACINQ. This site is an unofficial, non-commercial resource and is not affiliated with or endorsed by ACINQ. Always verify downloads against the official repository at <a href="https://github.com/ACINQ/eclair" target="_blank" rel="noopener">github.com/ACINQ/eclair</a>.</p>
+  </div>
+</footer>
+<script src="./assets/nav.js"></script>
+</body>
+</html>

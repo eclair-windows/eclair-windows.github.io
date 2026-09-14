@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eclair documentation overview — configuration &amp; API</title>
+<meta name="description" content="A community overview of Eclair's documentation: configuration via eclair.conf (HOCON), the JSON-RPC API and eclair-cli, and where to find the authoritative ACINQ docs.">
+<link rel="canonical" href="https://USERNAME.github.io/eclair/documentation.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Eclair documentation overview — configuration & API">
+<meta property="og:description" content="How Eclair is configured and controlled, with links to the official ACINQ documentation.">
+<meta property="og:url" content="https://USERNAME.github.io/eclair/documentation.html">
+<meta property="og:image" content="https://USERNAME.github.io/eclair/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/style.css">
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{ "@context":"https://schema.org","@type":"TechArticle","headline":"Eclair documentation overview","description":"How Eclair is configured and controlled.","about":{"@type":"SoftwareApplication","name":"Eclair","author":{"@type":"Organization","name":"ACINQ"}},"mainEntityOfPage":"https://USERNAME.github.io/eclair/documentation.html" }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="./index.html" aria-label="Eclair home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="#f7a916" stroke="#0e1b2a" stroke-width="1" stroke-linejoin="round"/></svg>Éclair <span class="fr">FR · flash of lightning</span></a>
+    <button class="navtoggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="./what-is-eclair.html">What is Eclair</a>
+      <a href="./features.html">Features</a>
+      <a href="./install.html">Install</a>
+      <a href="./documentation.html" aria-current="page">Docs</a>
+      <a href="./comparison.html">Comparison</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="./resources.html">Resources</a>
+      <a class="ghdl" href="https://github.com/ACINQ/eclair/releases" target="_blank" rel="noopener">Download ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="./index.html">Home</a> / Documentation</p>
+      <h1>Documentation overview</h1>
+      <p class="lead">How Eclair is configured and controlled, and where to find the authoritative reference.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <p class="notice">This is a community summary. The complete, current documentation lives with the project — see the
+      <a href="https://github.com/ACINQ/eclair#readme" target="_blank" rel="noopener">Eclair README</a> and the
+      <a href="https://github.com/ACINQ/eclair/wiki" target="_blank" rel="noopener">project wiki</a>.</p>
+
+      <h2>Configuration</h2>
+      <p>Eclair reads its settings from a HOCON file, usually <code>~/.eclair/eclair.conf</code>. HOCON is a human-friendly
+      configuration format (a superset of JSON) that supports comments and nested keys. Configuration covers which chain
+      you run, how to reach Bitcoin Core, networking and Tor, fee policy, channel limits, and API access.</p>
+      <pre><code><span class="c"># illustrative snippet — verify keys against the official docs</span>
+eclair.chain = "mainnet"
+eclair.server.port = 9735
+eclair.api.enabled = true
+eclair.bitcoind.rpcuser = "user"
+eclair.bitcoind.rpcpassword = "password"</code></pre>
+
+      <h2>The API and eclair-cli</h2>
+      <p>Eclair exposes a JSON-RPC style HTTP API. The bundled <code>eclair-cli</code> script is a thin wrapper that makes it
+      convenient from the shell. Because everything runs through the API, Eclair is easy to automate from other languages
+      and services.</p>
+      <pre><code><span class="k">$</span> eclair-cli getinfo          <span class="c"># node id, block height, version</span>
+<span class="k">$</span> eclair-cli channels         <span class="c"># list channels</span>
+<span class="k">$</span> eclair-cli createinvoice --amountMsat=&lt;amt&gt; --description="test"
+<span class="k">$</span> eclair-cli payinvoice --invoice=&lt;bolt11&gt;</code></pre>
+
+      <div class="cols cols-3" style="margin:28px 0">
+        <div class="card"><h3>Getting started</h3><p>Requirements, download, and first run are covered on the <a href="./install.html">install page</a>.</p></div>
+        <div class="card"><h3>Reference</h3><p>Full API methods and config keys are documented in the official repository and wiki.</p></div>
+        <div class="card"><h3>Support</h3><p>Issues and discussions happen on the project’s GitHub. See <a href="./resources.html">Resources</a>.</p></div>
+      </div>
+
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://github.com/ACINQ/eclair#readme" target="_blank" rel="noopener">Official docs ↗</a>
+        <a class="btn btn-ghost" href="./faq.html">Read the FAQ</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="fgrid">
+      <div><p class="brand-f">Éclair</p><p>An independent community guide to Eclair, the Scala Lightning Network node by ACINQ.</p></div>
+      <div><h4>Learn</h4><ul><li><a href="./what-is-eclair.html">What is Eclair</a></li><li><a href="./features.html">Features</a></li><li><a href="./comparison.html">Comparison</a></li><li><a href="./faq.html">FAQ</a></li></ul></div>
+      <div><h4>Use</h4><ul><li><a href="./install.html">Install</a></li><li><a href="./documentation.html">Documentation</a></li><li><a href="./resources.html">Resources</a></li></ul></div>
+      <div><h4>Official</h4><ul><li><a href="https://github.com/ACINQ/eclair" target="_blank" rel="noopener">Source (GitHub)</a></li><li><a href="https://github.com/ACINQ/eclair/releases" target="_blank" rel="noopener">Releases</a></li><li><a href="https://acinq.co" target="_blank" rel="noopener">ACINQ</a></li></ul></div>
+    </div>
+    <p class="disc">Eclair and the ACINQ name are the property of ACINQ. This site is an unofficial, non-commercial resource and is not affiliated with or endorsed by ACINQ. Always verify downloads against the official repository at <a href="https://github.com/ACINQ/eclair" target="_blank" rel="noopener">github.com/ACINQ/eclair</a>.</p>
+  </div>
+</footer>
+<script src="./assets/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Eclair — the Scala implementation of the Lightning Network</title>
+<meta name="description" content="Eclair is a scalable, BOLT-compliant Lightning Network node written in Scala and maintained by ACINQ. Learn what it is, how it works, and how to install it. Community resource with links to the official project.">
+<link rel="canonical" href="https://USERNAME.github.io/eclair/index.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Eclair — Lightning Network node (community guide)">
+<meta property="og:title" content="Eclair — the Scala implementation of the Lightning Network">
+<meta property="og:description" content="A scalable, BOLT-compliant Lightning Network node written in Scala by ACINQ. What it is, how it works, and how to install it.">
+<meta property="og:url" content="https://USERNAME.github.io/eclair/index.html">
+<meta property="og:image" content="https://USERNAME.github.io/eclair/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Eclair — the Scala implementation of the Lightning Network">
+<meta name="twitter:description" content="A scalable, BOLT-compliant Lightning Network node written in Scala by ACINQ.">
+<meta name="twitter:image" content="https://USERNAME.github.io/eclair/assets/og.png">
+
+<!-- Search engine / AI crawler verification (replace or remove) -->
+<meta name="google-site-verification" content="REPLACE_WITH_GOOGLE_VERIFICATION">
+<meta name="msvalidate.01" content="REPLACE_WITH_BING_VERIFICATION">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/style.css">
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+
+<!-- Structured data: describes the software (attributed to ACINQ) and this site -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://USERNAME.github.io/eclair/#website",
+      "name": "Eclair — Lightning Network node (community guide)",
+      "url": "https://USERNAME.github.io/eclair/",
+      "description": "Independent community documentation for Eclair, the Scala implementation of the Lightning Network by ACINQ.",
+      "publisher": { "@id": "https://USERNAME.github.io/eclair/#publisher" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://USERNAME.github.io/eclair/#publisher",
+      "name": "Eclair community guide",
+      "url": "https://USERNAME.github.io/eclair/"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Eclair",
+      "alternateName": "ACINQ Eclair",
+      "applicationCategory": "Bitcoin Lightning Network node",
+      "operatingSystem": "Any (JVM: Linux, macOS, Windows)",
+      "programmingLanguage": "Scala",
+      "license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "author": { "@type": "Organization", "name": "ACINQ", "url": "https://acinq.co" },
+      "isBasedOn": "https://github.com/lightning/bolts",
+      "downloadUrl": "https://github.com/ACINQ/eclair/releases",
+      "sameAs": [
+        "https://github.com/ACINQ/eclair",
+        "https://acinq.co"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://USERNAME.github.io/eclair/" }
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- Google Analytics 4 (GA4) — replace G-XXXXXXXXXX with your Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="./index.html" aria-label="Eclair home">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="#f7a916" stroke="#0e1b2a" stroke-width="1" stroke-linejoin="round"/></svg>
+      Éclair <span class="fr">FR · flash of lightning</span>
+    </a>
+    <button class="navtoggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="./what-is-eclair.html">What is Eclair</a>
+      <a href="./features.html">Features</a>
+      <a href="./install.html">Install</a>
+      <a href="./documentation.html">Docs</a>
+      <a href="./comparison.html">Comparison</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="./resources.html">Resources</a>
+      <a class="ghdl" href="https://github.com/ACINQ/eclair/releases" target="_blank" rel="noopener">Download ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <div class="grid">
+        <div>
+          <p class="trace">Scala · Lightning Network · maintained by ACINQ</p>
+          <h1>Eclair: a Lightning&nbsp;Network node built for scale</h1>
+          <p class="def">Eclair is an open-source implementation of the Bitcoin Lightning Network, written in Scala and maintained by ACINQ. It follows the BOLT specifications and is designed to run large, reliable routing nodes.</p>
+
+          <ul class="spec-chips">
+            <li>Language <b>Scala</b></li>
+            <li>Runtime <b>JVM</b></li>
+            <li>Spec <b>BOLT-compliant</b></li>
+            <li>License <b>Apache 2.0</b></li>
+            <li>Backend <b>Bitcoin Core</b></li>
+          </ul>
+
+          <div class="btn-row">
+            <a class="btn btn-primary" href="https://github.com/ACINQ/eclair/releases" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 20h14" fill="none" stroke="#0e1b2a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Download official releases
+            </a>
+            <a class="btn btn-ghost" href="./what-is-eclair.html">How it works</a>
+          </div>
+        </div>
+
+        <div class="arc-box" aria-hidden="true">
+          <svg viewBox="0 0 200 200" role="img">
+            <defs>
+              <radialGradient id="g" cx="50%" cy="45%" r="60%">
+                <stop offset="0%" stop-color="#f7a916" stop-opacity=".22"/>
+                <stop offset="100%" stop-color="#f7a916" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle class="arc-glow" cx="100" cy="95" r="90" fill="url(#g)"/>
+            <circle cx="100" cy="100" r="88" fill="none" stroke="#d3dde7" stroke-width="1"/>
+            <circle cx="100" cy="100" r="66" fill="none" stroke="#d3dde7" stroke-width="1"/>
+            <!-- schematic nodes -->
+            <circle cx="100" cy="34" r="4" fill="#3e5c76"/>
+            <circle cx="166" cy="100" r="4" fill="#3e5c76"/>
+            <circle cx="100" cy="166" r="4" fill="#3e5c76"/>
+            <circle cx="34" cy="100" r="4" fill="#3e5c76"/>
+            <!-- lightning arc -->
+            <path class="arc-path" d="M112 40 L84 104 L108 104 L86 162 L150 90 L118 90 L138 40 Z"
+                  fill="none" stroke="#f7a916" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <p class="notice" style="margin-top:40px">
+        This is an independent, community-maintained guide. It is <strong>not</strong> the official Eclair website.
+        The project is developed by ACINQ — source, releases and authoritative docs live at
+        <a href="https://github.com/ACINQ/eclair" target="_blank" rel="noopener">github.com/ACINQ/eclair</a>.
+        All download links here point to ACINQ’s official GitHub releases.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="trace">Definition</p>
+      <h2>What is Eclair?</h2>
+      <div class="answer">
+        <p><strong>Eclair is a full Lightning Network node implementation written in Scala and maintained by ACINQ.</strong>
+        It runs on the Java Virtual Machine, connects to a Bitcoin Core backend, and implements the BOLT
+        (Basis of Lightning Technology) specifications so it can open payment channels, route payments, and
+        interoperate with other Lightning implementations such as LND and Core Lightning.</p>
+        <p>Eclair is aimed at operators who need a dependable, scalable routing node rather than a desktop wallet.
+        The same engine underpins ACINQ’s own infrastructure and the technology behind the Phoenix wallet.</p>
+      </div>
+      <p><a href="./what-is-eclair.html">Read the full explainer →</a></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="trace">Why operators pick it</p>
+      <h2>Key characteristics</h2>
+      <div class="cols cols-3">
+        <div class="card">
+          <h3><span class="ix">01</span> Built for scale</h3>
+          <p>Eclair’s design targets large routing nodes with many channels, favouring throughput and reliability over a bundled GUI.</p>
+        </div>
+        <div class="card">
+          <h3><span class="ix">02</span> BOLT-compliant</h3>
+          <p>It follows the open Lightning specifications, so it interoperates cleanly with other spec-compliant nodes across the network.</p>
+        </div>
+        <div class="card">
+          <h3><span class="ix">03</span> API-first</h3>
+          <p>A JSON-RPC API and the <code>eclair-cli</code> tool let you script node operations, integrate services, and automate channel management.</p>
+        </div>
+      </div>
+      <p style="margin-top:26px"><a href="./features.html">See all features →</a></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta">
+        <div>
+          <h2>Ready to run a node?</h2>
+          <p>Grab the latest signed release from ACINQ and follow the install guide.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="./install.html">Install guide</a>
+          <a class="btn btn-ghost" href="https://github.com/ACINQ/eclair/releases" target="_blank" rel="noopener" style="color:#eaf1f8;border-color:#3e5c76">Official releases ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <p class="brand-f">Éclair</p>
+        <p>An independent community guide to Eclair, the Scala Lightning Network node by ACINQ.</p>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="./what-is-eclair.html">What is Eclair</a></li>
+          <li><a href="./features.html">Features</a></li>
+          <li><a href="./comparison.html">Comparison</a></li>
+          <li><a href="./faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Use</h4>
+        <ul>
+          <li><a href="./install.html">Install</a></li>
+          <li><a href="./documentation.html">Documentation</a></li>
+          <li><a href="./resources.html">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Official</h4>
+        <ul>
+          <li><a href="https://github.com/ACINQ/eclair" target="_blank" rel="noopener">Source (GitHub)</a></li>
+          <li><a href="https://github.com/ACINQ/eclair/releases" target="_blank" rel="noopener">Releases</a></li>
+          <li><a href="https://acinq.co" target="_blank" rel="noopener">ACINQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="disc">
+      Eclair and the ACINQ name are the property of ACINQ. This site is an unofficial, non-commercial
+      resource and is not affiliated with or endorsed by ACINQ. Always verify downloads against the
+      official repository at <a href="https://github.com/ACINQ/eclair" target="_blank" rel="noopener">github.com/ACINQ/eclair</a>.
+      Content is provided for informational purposes only and may lag behind the official documentation.
+    </p>
+  </div>
+</footer>
+<script src="./assets/nav.js"></script>
+</body>
+</html>

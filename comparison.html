@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eclair vs LND vs Core Lightning — Lightning node comparison</title>
+<meta name="description" content="How Eclair compares to other Lightning Network implementations — LND, Core Lightning (CLN) and LDK — by language, maintainer, license, backend and typical use case.">
+<link rel="canonical" href="https://USERNAME.github.io/eclair/comparison.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Eclair vs LND vs Core Lightning — Lightning node comparison">
+<meta property="og:description" content="Compare Eclair with LND, Core Lightning and LDK by language, maintainer, license and use case.">
+<meta property="og:url" content="https://USERNAME.github.io/eclair/comparison.html">
+<meta property="og:image" content="https://USERNAME.github.io/eclair/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/style.css">
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{ "@context":"https://schema.org","@type":"TechArticle","headline":"Eclair vs LND vs Core Lightning","description":"Comparison of Lightning Network implementations by language, maintainer and use case.","about":{"@type":"SoftwareApplication","name":"Eclair","author":{"@type":"Organization","name":"ACINQ"}},"mainEntityOfPage":"https://USERNAME.github.io/eclair/comparison.html" }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="./index.html" aria-label="Eclair home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="#f7a916" stroke="#0e1b2a" stroke-width="1" stroke-linejoin="round"/></svg>Éclair <span class="fr">FR · flash of lightning</span></a>
+    <button class="navtoggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="./what-is-eclair.html">What is Eclair</a>
+      <a href="./features.html">Features</a>
+      <a href="./install.html">Install</a>
+      <a href="./documentation.html">Docs</a>
+      <a href="./comparison.html" aria-current="page">Comparison</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="./resources.html">Resources</a>
+      <a class="ghdl" href="https://github.com/ACINQ/eclair/releases" target="_blank" rel="noopener">Download ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="./index.html">Home</a> / Comparison</p>
+      <h1>Eclair vs other Lightning implementations</h1>
+      <p class="lead">The major Lightning nodes all follow the same specs and interoperate. Here’s how they differ.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="answer">
+        <p><strong>Eclair, LND, and Core Lightning are the three most widely used full Lightning Network node
+        implementations, and all are BOLT-compliant, so they interoperate.</strong> They differ mainly in programming
+        language, maintainer, and the kind of operator they’re designed for. Eclair (Scala, ACINQ) is frequently chosen
+        for large server-side routing nodes; LND (Go, Lightning Labs) has the largest ecosystem and tooling; Core
+        Lightning (C, Blockstream) is known for a lean, modular, plugin-driven design.</p>
+      </div>
+
+      <div class="tbl-scroll">
+        <table>
+          <thead>
+            <tr><th>Implementation</th><th>Language</th><th>Maintainer</th><th>License</th><th>Typical use</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Eclair</th><td>Scala (JVM)</td><td>ACINQ</td><td>Apache 2.0</td><td>Large, reliable server-side routing nodes; API-driven integrations</td></tr>
+            <tr><th scope="row">LND</th><td>Go</td><td>Lightning Labs</td><td>MIT</td><td>Broad general use; the largest tooling and app ecosystem</td></tr>
+            <tr><th scope="row">Core Lightning (CLN)</th><td>C</td><td>Blockstream</td><td>MIT/BSD-style</td><td>Lean, modular nodes; heavy use of plugins</td></tr>
+            <tr><th scope="row">LDK</th><td>Rust</td><td>Spiral</td><td>Apache 2.0 / MIT</td><td>A library for building custom wallets/apps, not a turnkey node</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted">Licenses and details can change; confirm on each project’s own repository. LDK is a toolkit rather than a standalone node, included here for context.</p>
+
+      <h2>How to choose</h2>
+      <div class="cols cols-3">
+        <div class="card"><h3>Pick Eclair if…</h3><p>You run infrastructure on the JVM, want an API-first headless node, and are optimising for reliability on a large routing node.</p></div>
+        <div class="card"><h3>Pick LND if…</h3><p>You want the widest selection of compatible apps, guides and integrations, and a large community to lean on.</p></div>
+        <div class="card"><h3>Pick CLN if…</h3><p>You prefer a minimal, modular core and like composing functionality from plugins.</p></div>
+      </div>
+
+      <div class="btn-row" style="margin-top:28px">
+        <a class="btn btn-primary" href="./what-is-eclair.html">Learn more about Eclair</a>
+        <a class="btn btn-ghost" href="./install.html">Install Eclair</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="fgrid">
+      <div><p class="brand-f">Éclair</p><p>An independent community guide to Eclair, the Scala Lightning Network node by ACINQ.</p></div>
+      <div><h4>Learn</h4><ul><li><a href="./what-is-eclair.html">What is Eclair</a></li><li><a href="./features.html">Features</a></li><li><a href="./comparison.html">Comparison</a></li><li><a href="./faq.html">FAQ</a></li></ul></div>
+      <div><h4>Use</h4><ul><li><a href="./install.html">Install</a></li><li><a href="./documentation.html">Documentation</a></li><li><a href="./resources.html">Resources</a></li></ul></div>
+      <div><h4>Official</h4><ul><li><a href="https://github.com/ACINQ/eclair" target="_blank" rel="noopener">Source (GitHub)</a></li><li><a href="https://github.com/ACINQ/eclair/releases" target="_blank" rel="noopener">Releases</a></li><li><a href="https://acinq.co" target="_blank" rel="noopener">ACINQ</a></li></ul></div>
+    </div>
+    <p class="disc">Eclair and the ACINQ name are the property of ACINQ. This site is an unofficial, non-commercial resource and is not affiliated with or endorsed by ACINQ. Always verify downloads against the official repository at <a href="https://github.com/ACINQ/eclair" target="_blank" rel="noopener">github.com/ACINQ/eclair</a>.</p>
+  </div>
+</footer>
+<script src="./assets/nav.js"></script>
+</body>
+</html>

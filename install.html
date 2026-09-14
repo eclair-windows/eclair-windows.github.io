@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to install Eclair — requirements &amp; setup guide</title>
+<meta name="description" content="Step-by-step overview of installing Eclair: JVM and Bitcoin Core requirements, downloading the official release from ACINQ, configuring eclair.conf, and starting the node.">
+<link rel="canonical" href="https://USERNAME.github.io/eclair/install.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to install Eclair — requirements & setup guide">
+<meta property="og:description" content="Requirements and steps to install Eclair, ACINQ's Scala Lightning node. Downloads point to the official ACINQ releases.">
+<meta property="og:url" content="https://USERNAME.github.io/eclair/install.html">
+<meta property="og:image" content="https://USERNAME.github.io/eclair/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/style.css">
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"HowTo",
+  "name":"How to install Eclair",
+  "description":"Install and run Eclair, the Scala Lightning Network node by ACINQ.",
+  "step":[
+    {"@type":"HowToStep","position":1,"name":"Install a JDK","text":"Install a recent 64-bit Java Development Kit as required by the release you are targeting."},
+    {"@type":"HowToStep","position":2,"name":"Run Bitcoin Core","text":"Install and fully sync a Bitcoin Core node, with the settings Eclair requires enabled."},
+    {"@type":"HowToStep","position":3,"name":"Download Eclair","text":"Download the latest official release from ACINQ's GitHub releases page."},
+    {"@type":"HowToStep","position":4,"name":"Configure eclair.conf","text":"Create the eclair.conf file with your Bitcoin Core connection and node settings."},
+    {"@type":"HowToStep","position":5,"name":"Start the node","text":"Launch the Eclair daemon and control it with eclair-cli."}
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="./index.html" aria-label="Eclair home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="#f7a916" stroke="#0e1b2a" stroke-width="1" stroke-linejoin="round"/></svg>Éclair <span class="fr">FR · flash of lightning</span></a>
+    <button class="navtoggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="./what-is-eclair.html">What is Eclair</a>
+      <a href="./features.html">Features</a>
+      <a href="./install.html" aria-current="page">Install</a>
+      <a href="./documentation.html">Docs</a>
+      <a href="./comparison.html">Comparison</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="./resources.html">Resources</a>
+      <a class="ghdl" href="https://github.com/ACINQ/eclair/releases" target="_blank" rel="noopener">Download ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="./index.html">Home</a> / Install</p>
+      <h1>How to install Eclair</h1>
+      <p class="lead">The requirements and the shape of a typical setup. Downloads go straight to ACINQ’s official releases.</p>
+    </div>
+  </div>
+
+  <section style="padding-bottom:32px">
+    <div class="wrap">
+      <div class="cta" style="margin-bottom:8px">
+        <div>
+          <h2>Download Eclair</h2>
+          <p>Get the latest signed release directly from ACINQ on GitHub.</p>
+        </div>
+        <a class="btn btn-primary" href="https://github.com/ACINQ/eclair/releases" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 20h14" fill="none" stroke="#0e1b2a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Official releases ↗
+        </a>
+      </div>
+      <p class="notice">Only download Eclair from the official ACINQ repository. This guide is a community overview; the
+      <a href="https://github.com/ACINQ/eclair#readme" target="_blank" rel="noopener">official README</a> is the source of truth for exact versions and commands.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:16px">
+    <div class="wrap">
+      <h2>Requirements</h2>
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>Component</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">JDK</th><td>A recent 64-bit Java Development Kit. Eclair targets a modern LTS release — confirm the exact required version in the release notes before installing.</td></tr>
+            <tr><th scope="row">Bitcoin Core</th><td>A fully synced <code>bitcoind</code> node acts as Eclair’s backend. Certain options must be enabled; see the official docs.</td></tr>
+            <tr><th scope="row">Disk &amp; RAM</th><td>Enough for a synced Bitcoin Core node plus Eclair’s own database and JVM headroom.</td></tr>
+            <tr><th scope="row">Networking</th><td>A reachable node needs its Lightning port open; many operators also run over Tor.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 style="margin-top:16px">Typical setup</h2>
+      <ol class="steps">
+        <li>
+          <h3>Install a JDK</h3>
+          <p>Install a supported 64-bit JDK and confirm it’s on your <code>PATH</code>:</p>
+          <pre><code><span class="k">$</span> java -version</code></pre>
+        </li>
+        <li>
+          <h3>Run and sync Bitcoin Core</h3>
+          <p>Install Bitcoin Core, enable the options Eclair needs (RPC access, transaction indexing, ZeroMQ notifications where required), and let it fully sync before continuing.</p>
+        </li>
+        <li>
+          <h3>Download the official release</h3>
+          <p>Grab the latest release artifact from ACINQ’s <a href="https://github.com/ACINQ/eclair/releases" target="_blank" rel="noopener">GitHub releases</a>. Verify the download against the checksums/signatures ACINQ publishes.</p>
+        </li>
+        <li>
+          <h3>Create eclair.conf</h3>
+          <p>Add your configuration file (typically under <code>~/.eclair/eclair.conf</code>) pointing Eclair at your Bitcoin Core node and setting your chain and node options:</p>
+          <pre><code><span class="c"># minimal example — check the docs for current keys</span>
+eclair.chain = "mainnet"
+eclair.bitcoind.rpcuser = "your_rpc_user"
+eclair.bitcoind.rpcpassword = "your_rpc_password"</code></pre>
+        </li>
+        <li>
+          <h3>Start the node and use eclair-cli</h3>
+          <p>Launch the daemon, then drive it through the CLI:</p>
+          <pre><code><span class="k">$</span> eclair-cli getinfo
+<span class="k">$</span> eclair-cli connect --uri=&lt;node_uri&gt;
+<span class="k">$</span> eclair-cli open --nodeId=&lt;id&gt; --fundingSatoshis=&lt;amount&gt;</code></pre>
+        </li>
+      </ol>
+
+      <p class="muted">Commands, config keys and required versions evolve. Treat this page as orientation and follow the
+      <a href="https://github.com/ACINQ/eclair#readme" target="_blank" rel="noopener">official README</a> for exact, current instructions.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="fgrid">
+      <div><p class="brand-f">Éclair</p><p>An independent community guide to Eclair, the Scala Lightning Network node by ACINQ.</p></div>
+      <div><h4>Learn</h4><ul><li><a href="./what-is-eclair.html">What is Eclair</a></li><li><a href="./features.html">Features</a></li><li><a href="./comparison.html">Comparison</a></li><li><a href="./faq.html">FAQ</a></li></ul></div>
+      <div><h4>Use</h4><ul><li><a href="./install.html">Install</a></li><li><a href="./documentation.html">Documentation</a></li><li><a href="./resources.html">Resources</a></li></ul></div>
+      <div><h4>Official</h4><ul><li><a href="https://github.com/ACINQ/eclair" target="_blank" rel="noopener">Source (GitHub)</a></li><li><a href="https://github.com/ACINQ/eclair/releases" target="_blank" rel="noopener">Releases</a></li><li><a href="https://acinq.co" target="_blank" rel="noopener">ACINQ</a></li></ul></div>
+    </div>
+    <p class="disc">Eclair and the ACINQ name are the property of ACINQ. This site is an unofficial, non-commercial resource and is not affiliated with or endorsed by ACINQ. Always verify downloads against the official repository at <a href="https://github.com/ACINQ/eclair" target="_blank" rel="noopener">github.com/ACINQ/eclair</a>.</p>
+  </div>
+</footer>
+<script src="./assets/nav.js"></script>
+</body>
+</html>
